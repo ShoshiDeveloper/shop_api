@@ -1,0 +1,6 @@
+services:
+  shop_api:
+    build: .
+    container_name: 'shop_api'
+    ports:
+      - "8080:8080"
