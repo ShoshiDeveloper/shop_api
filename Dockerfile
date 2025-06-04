@@ -1,7 +1,7 @@
 # An example of using a custom Dockerfile with Dart Frog
 # Official Dart image: https://hub.docker.com/_/dart
 # Specify the Dart SDK base image version using dart:<version> (ex: dart:2.17)
-FROM dart:3.5.2-sdk AS build
+FROM dart:stable AS build
 
 WORKDIR /app
 
