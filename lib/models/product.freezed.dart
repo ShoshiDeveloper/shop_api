@@ -17,11 +17,11 @@ T _$identity<T>(T value) => value;
 mixin _$Product {
   int get id;
   String get name;
-  String get category;
+  ProductCategory get category;
   double get price;
   int get discount;
-  String get description;
-  double get weight;
+  String? get description;
+  double? get weight;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -69,11 +69,11 @@ abstract mixin class $ProductCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String category,
+      ProductCategory category,
       double price,
       int discount,
-      String description,
-      double weight});
+      String? description,
+      double? weight});
 }
 
 /// @nodoc
@@ -93,8 +93,8 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? category = null,
     Object? price = null,
     Object? discount = null,
-    Object? description = null,
-    Object? weight = null,
+    Object? description = freezed,
+    Object? weight = freezed,
   }) {
     return _then(_self.copyWith(
       id: null == id
@@ -108,7 +108,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       category: null == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ProductCategory,
       price: null == price
           ? _self.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -117,14 +117,14 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _self.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
+      description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      weight: null == weight
+              as String?,
+      weight: freezed == weight
           ? _self.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
@@ -137,9 +137,9 @@ class _Product implements Product {
       required this.name,
       required this.category,
       required this.price,
-      required this.discount,
-      required this.description,
-      required this.weight});
+      this.discount = 0,
+      this.description,
+      this.weight});
   factory _Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
 
@@ -148,15 +148,16 @@ class _Product implements Product {
   @override
   final String name;
   @override
-  final String category;
+  final ProductCategory category;
   @override
   final double price;
   @override
+  @JsonKey()
   final int discount;
   @override
-  final String description;
+  final String? description;
   @override
-  final double weight;
+  final double? weight;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -210,11 +211,11 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   $Res call(
       {int id,
       String name,
-      String category,
+      ProductCategory category,
       double price,
       int discount,
-      String description,
-      double weight});
+      String? description,
+      double? weight});
 }
 
 /// @nodoc
@@ -234,8 +235,8 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
     Object? category = null,
     Object? price = null,
     Object? discount = null,
-    Object? description = null,
-    Object? weight = null,
+    Object? description = freezed,
+    Object? weight = freezed,
   }) {
     return _then(_Product(
       id: null == id
@@ -249,7 +250,7 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
       category: null == category
           ? _self.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ProductCategory,
       price: null == price
           ? _self.price
           : price // ignore: cast_nullable_to_non_nullable
@@ -258,14 +259,14 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
           ? _self.discount
           : discount // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
+      description: freezed == description
           ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      weight: null == weight
+              as String?,
+      weight: freezed == weight
           ? _self.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
     ));
   }
 }
